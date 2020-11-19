@@ -1,0 +1,269 @@
+/*
+*  按钮样式
+ */
+ @import './variables.scss';
+
+ @mixin colorBtn($color) {
+   background: $color;
+ }
+ 
+ //按钮颜色
+ .blue-btn {
+   @include colorBtn($blue)
+ }
+ 
+ .light-blue-btn {
+   @include colorBtn($light-blue)
+ }
+ 
+ .red-btn {
+   @include colorBtn($red)
+ }
+ 
+ .pink-btn {
+   @include colorBtn($pink)
+ }
+ 
+ .green-btn {
+   @include colorBtn($green)
+ }
+ 
+ .tiffany-btn {
+   @include colorBtn($tiffany)
+ }
+ 
+ .yellow-btn {
+   @include colorBtn($yellow)
+ }
+ .regit-btn {
+   border-radius: 4px;
+   border: none;
+   outline: none;
+   text-align: center;
+   color: #ffffff;
+   width: 100px;
+   justify-content: center;
+   align-items: center;
+   height: 36px;
+   &.exit-btn {
+     border: solid 1px #cccccc;
+     color: #666666;
+     background: white;
+   }
+   &.del-btn {
+     border: solid 1px #ff0000;
+     color: #ff0000;
+     background: white;
+   }
+   &.el-button {
+     padding: 0;
+   }
+ }
+ 
+ //按钮组
+ .button-group {
+   button {
+     margin: 0 10px;
+   }
+ }
+ 
+ .el-message-box{
+   .el-message-box__btns{
+     .el-button {
+       min-width: 100px !important;
+       overflow: hidden !important;
+       height: 36px !important;
+     }
+   }
+ }
+ .el-button--primary {
+   min-width: 100px;
+   line-height: 36px;
+   overflow: hidden;
+   height: 36px;
+   padding: 0 9px;
+   .iconfont{
+     margin-right: 3px;
+     position: relative;
+     font-size: 16px;
+   }
+   &.urgent {
+     top: 1px;
+     background: white;
+     color: #f73535 ;
+     border: 1px solid #f73535;
+     &.is-disabled{
+       opacity: 0.6;
+       &:hover {
+         background: white !important;
+         color: #f73535 !important;
+         border: 1px solid #f73535;
+       }
+     }
+     &:hover {
+       background: #f73535;
+       color: white;
+     }
+   }
+   &.other {
+     top: 0;
+     background: white;
+     color: #f55e14;
+     border: 1px solid #f55e14;
+     &.is-disabled{
+       opacity: 0.6;
+       &:hover {
+         background: white !important;
+         color: #f55e14 !important;
+         border: 1px solid #f55e14;
+       }
+     }
+     &:hover {
+       background: #f55e14;
+       color: white;
+       border: 1px solid #f55e14;
+     }
+   }
+   &.gray {
+     top: 0;
+     background: white;
+     color: rgba(0,0,0,0.5);
+     border: 1px solid rgba(0,0,0,0.2);
+     &.is-disabled{
+       opacity: 0.6;
+       &:hover {
+         background: white !important;
+         color: rgba(0,0,0,0.5) !important;
+         border: 1px solid rgba(0,0,0,0.2);
+       }
+     }
+     &:hover {
+       background: white;
+       color: rgba(0,0,0,0.5);
+     }
+   }
+   &.more {
+     top: 1px;
+     background: white;
+     color: #248bfe;
+     border: 1px solid #248bfe;
+     &:hover {
+       background: #248bfe;
+       color: white;
+       border: 1px solid #248bfe;
+     }
+     &.is-disabled{
+       opacity: 0.6;
+       &:hover {
+         background: white !important;
+         border: 1px solid #248bfe;
+         color: #248bfe !important;
+       }
+     }
+   }
+ }
+ .el-button {
+   i{
+     font-size: 16px;
+   }
+   span{
+     font-size: 14px;
+   }
+ }
+ .el-table{
+  .el-button {
+    i{
+      font-size: 16px;
+    }
+    // span{
+    //   font-size: 12px !important;
+    // }
+  }
+ }
+ //搜索
+ .search_cons, .userTitle, .header-search{
+   .el-col-3{
+     .iconfont{
+       margin-right: 3px;
+       position: relative;
+       top: 1px;
+       font-size: 16px;
+     }
+   }
+   .el-button{
+     min-width: 100px;
+     padding: 0 9px;
+     line-height: 36px;
+     overflow: hidden;
+     height: 36px;
+     &.search {
+       background: rgb(255, 132, 0);
+       color: white;
+       border: 1px solid rgb(255, 132, 0);
+       &:hover {
+         background: rgb(255, 132, 0);
+         color: white;
+         opacity: 0.8;
+       }
+       &.is-disabled{
+         opacity: 0.6;
+         &:hover {
+           background: rgb(255, 132, 0) !important;
+           border: 1px solid rgb(255, 132, 0);
+           color: white !important;
+         }
+       }
+     }
+     &.more {
+       background: white;
+       color: #248bfe;
+       border: 1px solid #248bfe;
+       &:hover {
+         background: #248bfe;
+         color: white;
+         opacity: 0.8;
+       }
+       &.is-disabled{
+         opacity: 0.6;
+         &:hover {
+           border: 1px solid #248bfe;
+           background: white !important;
+           color: #248bfe !important;
+         }
+       }
+     }
+   }
+ }
+ .search_cons_btn{
+   margin-top: 5px;
+   text-align: right;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+ }
+ .el-button--text {
+   &.danger {
+     color: #f73535;
+     &.is-disabled{
+       color: #C0C4CC !important;
+     }
+   }
+   &.warning {
+     color: #f55e14;
+     &.is-disabled{
+       color: #C0C4CC !important;
+     }
+   }
+   &.success{
+    color: #24b568;
+    &.is-disabled{
+      color: #C0C4CC !important;
+    }
+  }
+ }
+ .footer{
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   margin-top: 10px;
+ }
