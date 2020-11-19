@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-19 16:13:36
- * @LastEditTime: 2020-11-19 16:46:59
+ * @LastEditTime: 2020-11-19 19:26:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \exChange\src\views\currencyTransaction\currencyIntroduction\config.js
@@ -37,6 +37,7 @@ const PageConfig = {
   ],
   // 主表渲染参数
   mainTable: {
+    border: true,
     //  单选
     isRadio: true,
     // 表格数据
