@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-26 17:48:27
- * @LastEditTime: 2020-11-19 12:53:58
+ * @LastEditTime: 2020-11-19 16:47:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \web_projectmaterial\src\components\basicComponents\global\table\queryTable\queryTable.vue
@@ -75,7 +75,7 @@
       <el-table-column v-if="item.inputStatus !=='hide' && item.formType === 'expand'"
         :key="item.id" :fixed="item.fixed || false" :prop="item.prop" :label="item.label"
         :width="item.minWidth + '%'" type="expand"
-        :align="item.formType === 'operate' ? 'center' : item.align || 'left'"
+        align="center"
         :show-overflow-tooltip="item.formType !== 'operate'">
         <template slot="header">
           <tooltips :value="item.label">
@@ -88,7 +88,7 @@
       <el-table-column v-if="item.inputStatus !=='hide' && item.formType !== 'expand'"
         :key="item.id" :fixed="item.fixed || false" :prop="item.prop"
         :width="item.minWidth + '%'"
-        :align="item.formType === 'operate' ? 'center' : item.formType === 'setMoney' || item.filterName === 'setMoney' ? 'right' : item.align || 'left'"
+        align="center"
         :show-overflow-tooltip="item.formType !== 'operate'">
         <!-- 子级 -->
         <template v-if="item.children && item.children.length">
@@ -96,7 +96,7 @@
             <el-table-column v-if="child.inputStatus !=='hide' && child.formType !== 'expand'"
               :key="child.id" :fixed="child.fixed || false" :prop="child.prop"
               :width="child.minWidth + '%'"
-              :align="child.formType === 'operate' ? 'center' : child.formType === 'setMoney' || child.filterName === 'setMoney' ? 'right' : child.align || 'left'"
+              align="center"
               :show-overflow-tooltip="child.formType !== 'operate'">
                 <template slot="header">
                 <tooltips :value="child.label">
@@ -110,7 +110,6 @@
                   <template  v-for="but in child.buts">
                     <el-button :key="but.id" :class="but.class"
                       :disabled="handleFlowStatus(scope.row,but)"
-                      v-if="!but.noAuth ? authButtonList.indexOf(but.authCode) >= 0 : true"
                       @click.stop.prevent="setFn(but, scope.row)" type="text" size="mini" v-fast-click>
                       {{but.name}}
                     </el-button>
@@ -170,7 +169,6 @@
             <template  v-for="but in item.buts">
               <el-button :key="but.id" :class="but.class"
                 :disabled="handleFlowStatus(scope.row,but)"
-                v-if="!but.noAuth ? authButtonList.indexOf(but.authCode) >= 0 : true"
                 @click.stop.prevent="setFn(but, scope.row)" type="text" size="mini" v-fast-click>
                 {{but.name}}
               </el-button>
@@ -238,7 +236,6 @@
     data () {
       return {
         localConfig: LocalConfig(),
-        authButtonList: [],
         selectionChangeList: [],
         rowIndex: -1,
         dialogAttachment: false,
@@ -249,9 +246,6 @@
       attachment (resolve) {
         require(['../../upload/attachment'], resolve);
       }
-    },
-    created() {
-      this.authButtonList = this.$route.meta.authButtonList && this.$route.meta.authButtonList.map(v => v.resUrl);
     },
     props: {
       // 配置

@@ -2,8 +2,7 @@
   <div>
     <div class="header">
       <div class="logo">
-        <img :src="require('assets/images/logowhite.png')" alt="">
-        <span></span>
+        <span>交易所后台管理系统</span>
       </div>
       <div class="menu">
       </div>
@@ -182,6 +181,9 @@
     .logo {
       float: left;
       margin-right: 10px;
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 550;
       img {
         height: 30px;
         margin-top: 12px;

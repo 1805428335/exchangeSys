@@ -25,7 +25,7 @@
           <template v-for="(item) in slaveColumns">
             <el-table-column :key="item.prop" :label="item.label" :prop="item.prop"
               :show-overflow-tooltip="item.showOverflowTooltip !== undefined ? item.showOverflowTooltip : true"
-              :align="(item.filterName === 'setMoney' || item.filterName === 'number') ? 'right' : item.align || 'left'"
+              align="center"
               :width="item.minWidth" v-if="item.inputStatus !=='hide'">
               <template slot="header">
                 <tooltips :value="item.label">

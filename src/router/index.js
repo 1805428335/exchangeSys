@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-07-13 09:00:27
- * @LastEditTime: 2020-11-19 15:11:08
+ * @LastEditTime: 2020-11-19 17:06:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \web_unit\src\router\index.js
@@ -80,6 +80,72 @@ export const constantRouterMap = [
           name: 'withdrawalAudit',
           resName: '提币审核',
           meta: {title: '提币审核', metaName: 'withdrawalAudit', isCached: true}
+        }
+      ]
+    },
+    // 币币交易
+    {
+      path: '',
+      name: 'currencyTransaction',
+      resName: '币币交易',
+      isMenuShow: true,
+      component: Layout,
+      children: [
+        {
+          isMenuShow: true,
+          path: '/tradeBenchmarking',
+          component: _import('currencyTransaction/tradeBenchmarking/tradeBenchmarking'),
+          name: 'tradeBenchmarking',
+          resName: '交易对标',
+          meta: {title: '交易对标', metaName: 'tradeBenchmarking', isCached: true}
+        },
+        {
+          isMenuShow: true,
+          path: '/currencyIntroduction',
+          component: _import('currencyTransaction/currencyIntroduction/currencyIntroduction'),
+          name: 'currencyIntroduction',
+          resName: '币种简介',
+          meta: {title: '币种简介', metaName: 'currencyIntroduction', isCached: true}
+        },
+        {
+          isMenuShow: false,
+          path: '/currencyIntroductionEdit/:type/:id',
+          component: _import('currencyTransaction/currencyIntroduction/currencyIntroductionEdit'),
+          name: 'currencyIntroductionEdit',
+          resName: '币种简介编辑',
+          meta: {title: '币种简介编辑', metaName: 'currencyIntroductionEdit', lastRouterName: 'currencyIntroduction', isCached: true}
+        },
+        {
+          isMenuShow: true,
+          path: '/commissionOrder',
+          component: _import('currencyTransaction/commissionOrder/commissionOrder'),
+          name: 'commissionOrder',
+          resName: '委托订单',
+          meta: {title: '委托订单', metaName: 'commissionOrder', isCached: true}
+        },
+        {
+          isMenuShow: true,
+          path: '/transactionRecord',
+          component: _import('currencyTransaction/transactionRecord/transactionRecord'),
+          name: 'transactionRecord',
+          resName: '成交记录',
+          meta: {title: '成交记录', metaName: 'transactionRecord', isCached: true}
+        },
+        {
+          isMenuShow: true,
+          path: '/transactionFee',
+          component: _import('currencyTransaction/transactionFee/transactionFee'),
+          name: 'transactionFee',
+          resName: '交易手续费',
+          meta: {title: '交易手续费', metaName: 'transactionFee', isCached: true}
+        },
+        {
+          isMenuShow: true,
+          path: '/robot',
+          component: _import('currencyTransaction/robot/robot'),
+          name: 'robot',
+          resName: '机器人',
+          meta: {title: '机器人', metaName: 'robot', isCached: true}
         }
       ]
     }

@@ -73,7 +73,7 @@
                 plain: false,
                 icon: 'el-icon-upload2',
                 class: 'more',
-                name: 'button.upload',
+                name: '上 传',
                 code: 'sysHandleUpload',
                 slot: false
             },
@@ -83,7 +83,7 @@
                 type: 'primary',
                 plain: false,
                 icon: 'el-icon-plus',
-                name: 'button.add',
+                name: '添 加',
                 code: 'sysHandleAdd',
                 slot: false
             },
@@ -94,7 +94,7 @@
                 plain: false,
                 icon: 'el-icon-download',
                 class: 'more',
-                name: 'button.export',
+                name: '导 出',
                 code: 'sysHandleExport',
                 slot: false
             },
@@ -105,7 +105,7 @@
                 plain: false,
                 icon: 'el-icon-folder-opened',
                 class: 'more',
-                name: 'button.Import',
+                name: '导 入',
                 code: 'sysHandleImport',
                 slot: false
             },
@@ -116,7 +116,7 @@
                 plain: false,
                 icon: 'el-icon-document',
                 class: 'more',
-                name: 'button.downloadTemplate',
+                name: '下载模板',
                 code: 'sysHandleDownloadTemplate',
                 slot: false
             },
@@ -127,7 +127,7 @@
                 plain: false,
                 icon: 'el-icon-upload2',
                 class: 'urgent',
-                name: 'button.startProcess',
+                name: '提交流程',
                 code: 'sysHandleStartProcess',
                 slot: false
             },
@@ -138,7 +138,7 @@
                 plain: false,
                 icon: 'el-icon-aim',
                 class: 'urgent',
-                name: 'button.monitorProcess',
+                name: '流程监控',
                 code: 'sysHandleMonitorProcess',
                 slot: false
             },
@@ -149,7 +149,7 @@
                 plain: false,
                 icon: 'el-icon-printer',
                 class: 'other',
-                name: 'button.print',
+                name: '打 印',
                 code: 'sysHandlePrint',
                 slot: false
             },
@@ -160,7 +160,7 @@
                 plain: false,
                 icon: 'el-icon-printer',
                 class: 'other',
-                name: 'button.printLable',
+                name: '打印标签',
                 code: 'sysHandlePrintLabel',
                 slot: false
             },
@@ -171,7 +171,7 @@
                 plain: false,
                 icon: 'el-icon-circle-close',
                 class: 'urgent',
-                name: 'button.close',
+                name: '取 消',
                 code: 'sysCancelSave',
                 slot: false
             },
@@ -183,7 +183,7 @@
                 icon: 'el-icon-delete',
                 isDelete: true,
                 class: 'urgent',
-                name: 'button.deleteAll',
+                name: '全部删除',
                 code: 'sysHandleDeleteAll',
                 slot: false
             },
@@ -195,7 +195,7 @@
                 icon: 'el-icon-delete',
                 isDelete: true,
                 class: 'urgent',
-                name: 'button.batchDeletion',
+                name: '批量删除',
                 code: 'sysHandleDeletaBatch',
                 slot: false
             },
@@ -205,7 +205,7 @@
                 type: 'primary',
                 plain: false,
                 icon: 'el-icon-plus',
-                name: 'button.addDetails',
+                name: '添加明细',
                 code: 'sysHandleDeletaAdd',
                 slot: false
             },
@@ -215,7 +215,7 @@
                 type: 'primary',
                 plain: false,
                 icon: 'el-icon-plus',
-                name: 'button.selectDetails',
+                name: '选择明细',
                 code: 'sysHandleSelectDetail',
                 slot: false
             },
@@ -225,7 +225,7 @@
                 type: '',
                 plain: false,
                 icon: 'el-icon-download',
-                name: 'button.exportDetails',
+                name: '导出明细',
                 code: 'sysHandleExportDetail',
                 slot: false
             },
@@ -236,7 +236,7 @@
                 plain: false,
                 icon: 'el-icon-circle-check',
                 class: '',
-                name: 'button.save',
+                name: '保 存',
                 code: 'sysSaveData',
                 slot: false
             },
@@ -247,7 +247,7 @@
                 plain: false,
                 icon: 'el-icon-magic-stick',
                 class: 'more',
-                name: 'button.reset',
+                name: '重 置',
                 code: 'sysHandleResetForm',
                 slot: false
             },
@@ -258,7 +258,7 @@
                 plain: true,
                 icon: 'el-icon-search',
                 class: 'search',
-                name: 'button.search',
+                name: '搜 索',
                 code: 'sysHandleSearch',
                 slot: false
             },

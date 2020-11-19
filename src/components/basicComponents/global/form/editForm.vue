@@ -391,7 +391,7 @@
                 state = '请输入';
               }
               this.rules[item.prop].push({
-                message: item.rulesMessage ? item.rulesMessage : `${state}${this.item.label}`,
+                message: item.rulesMessage ? item.rulesMessage : `${state}${item.label}`,
                 trigger: item.formType === 'input' ? 'blur' : 'change',
                 required: true
               });
@@ -420,7 +420,7 @@
                 state = '请选择';
               }
               this.rules[item.prop].push({
-                message: item.rulesMessage ? item.rulesMessage : `${state}${this.item.label}`,
+                message: item.rulesMessage ? item.rulesMessage : `${state}${item.label}`,
                 trigger: item.formType === 'input' ? 'blur' : 'change',
                 required: true
               });
@@ -471,7 +471,7 @@
                 state = '请选择';
               }
             this.rules[item.prop].push({
-              message: item.rulesMessage ? item.rulesMessage : `${state}${this.item.label}`,
+              message: item.rulesMessage ? item.rulesMessage : `${state}${item.label}`,
               trigger: item.formType === 'input' ? 'blur' : 'change',
               required: true
             });

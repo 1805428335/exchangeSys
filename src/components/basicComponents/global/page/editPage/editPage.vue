@@ -2,7 +2,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-13 15:00:46
- * @LastEditTime: 2020-11-19 12:48:38
+ * @LastEditTime: 2020-11-19 17:14:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \web_unit\src\views\partyA\partyAInformation\partyAInformationEdit.vue
@@ -12,12 +12,14 @@
         <div class='roleCons'>
             <!-- 企业基本信息 -->
             <g-edit-title
-            :title="isProcess ? translateName : `${translateName}${typeNmae}`">
+            :title="isProcess ? translateName : `${translateName}${typeName}`">
                 <div>
-                    <el-button class="urgent" type="primary"
-                    icon="el-icon-circle-close" size="small" @click="handleClose">取 消</el-button>
                     <el-button :disabled="!pageDisabled" size="small" type="primary"
                     icon="el-icon-circle-check" @click="handleSave" v-fast-click>保 存</el-button>
+                    <el-button :disabled="!pageDisabled" size="small" type="primary"
+                    icon="el-icon-magic-stick" class="more" @click="handleReset" v-fast-click>重 置</el-button>
+                    <el-button class="urgent" type="primary"
+                    icon="el-icon-circle-close" size="small" @click="handleClose">关 闭</el-button>
                 </div>
             </g-edit-title>
             <div class='content'>
@@ -46,7 +48,7 @@ export default {
     created() {
         this.type = this.$base64.decode(this.$route.params.type);
         this.id = Number(this.$base64.decode(this.$route.params.id));
-        this.translateName = this.$route.name;
+        this.translateName = this.$route.meta.title;
         this.pageStatus();
     },
     methods: {
@@ -70,6 +72,10 @@ export default {
         // 保存
         handleSave () {
             this.$emit('editEvent', 'save');
+        },
+        // 重置
+        handleReset() {
+            this.$emit('editEvent', 'reset');
         }
     }
 };

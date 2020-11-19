@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-06-28 09:08:48
- * @LastEditTime: 2020-11-18 11:11:51
+ * @LastEditTime: 2020-11-19 17:06:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \web_basicconfiguration-施工云企业信息及配置\src\mixins\searchMixins.js
@@ -20,12 +20,10 @@ export const search = {
       loading: false,
       queryLoading: false,
       searchData: {},
-      authButtonList: [],
       cloneSearchData: {}
     };
   },
   created () {
-    this.authButtonList = this.$route.meta.authButtonList && this.$route.meta.authButtonList.map(v => v.resUrl);
     if (this.page) {
       if (this.searchData.flowStatus !== undefined) {
         if (this.searchData.flowStatus === '') {
@@ -221,7 +219,7 @@ export const search = {
     handleSetRouter(type, row = {}) {
       if (row.id) {
         if (!this.judgeSamePerson(row) && type === 'edit') {
-          this.editError(this.$t('button.edit'));
+          this.editError('修改');
           return;
         }
       }
@@ -230,7 +228,7 @@ export const search = {
       const id = this.$base64.encode(row.id || 0);
       const RouteTitleObj = {name: `${this.$route.name}Edit`, loadRouteName: this.$route.name, translateType};
       localStorage.setItem('RouteTitle', JSON.stringify(RouteTitleObj));
-      this.$router.push(`/${this.$route.name}Edit/${type}/${id}/${this.$route.name}`);
+      this.$router.push(`/${this.$route.name}Edit/${type}/${id}`);
     },
     // 添加
     sysHandleAdd() {
@@ -248,12 +246,12 @@ export const search = {
     handleSaveData (data) {
       const saveUrl = this.page.PageConfig.processParmas.saveUrl;
       this.$store.dispatch(saveUrl.url, data).then(res => {
-          const status = this.type === 'add' ? this.$t('button.add') : this.$t('button.edit');
+          const status = this.type === 'add' ? '添加' : '修改';
           if (res.status === 0) {
             this._getTableDataList();
-            this.$message.success(`${status}${this.$t('tips.success')}!`);
+            this.$message.success(`${status}成功!`);
           } else {
-            this.$message.error(`${status}${this.$t('tips.fail')}!`);
+            this.$message.error(`${status}失败!`);
           }
       });
     },
@@ -267,7 +265,7 @@ export const search = {
     //   api: 'partyAType/partyATypeDisable'
     // }
     setDataStatus(statusConfig) {
-      const statusTips = statusConfig.row.status === 0 ? this.$t('button.disable') : this.$t('button.enable');
+      const statusTips = statusConfig.row.status === 0 ? '禁用' : '启用';
       const status = statusConfig.row.status === 0 ? 1 : 0;
       this.$confirm(`${statusTips} ${statusConfig.row[statusConfig.keyName]}?`, statusTips, {
         confirmButtonText: '确定',
@@ -278,9 +276,9 @@ export const search = {
         this.$store.dispatch(statusConfig.api, {[statusConfig.keyId]: statusConfig.row.id, status}).then(res => {
           if (res.status === 0) {
             this._getTableDataList();
-            this.$message.success(`${statusTips}${this.$t('tips.success')}!`);
+            this.$message.success(`${statusTips}成功!`);
           } else {
-            this.$message.error(`${statusTips}${this.$t('tips.fail')}!`);
+            this.$message.error(`${statusTips}失败!`);
           }
         });
       })
@@ -289,10 +287,10 @@ export const search = {
     // 删除
     setDataDelete(statusConfig, row) {
       if (!this.judgeSamePerson(row) && statusConfig.isCreate !== false) {
-        this.editError(this.$t('button.delete'));
+        this.editError('删除');
         return;
       }
-      this.$confirm(`${this.$t('button.delete')} ${statusConfig.row[statusConfig.keyName]}?`, this.$t('button.delete'), {
+      this.$confirm(`删除 ${statusConfig.row[statusConfig.keyName]}?`, '删除', {
         confirmButtonText: '确定',
         cancelButtonText: '取 消',
         type: 'warning'
@@ -301,9 +299,9 @@ export const search = {
         this.$store.dispatch(statusConfig.api, {[statusConfig.keyId]: statusConfig.row.id}).then(res => {
           if (res.status === 0) {
             this._getTableDataList();
-            this.$message.success(`${this.$t('button.delete')}${this.$t('tips.success')}!`);
+            this.$message.success('删除成功!');
           } else {
-            this.$message.error(`${this.$t(`exception.${res.errorCode}`)}${this.$t('button.delete')}${this.$t('tips.fail')}!`);
+            this.$message.error('删除失败!');
           }
         });
       })

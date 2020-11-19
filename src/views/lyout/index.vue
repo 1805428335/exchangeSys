@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-09-02 11:25:48
- * @LastEditTime: 2020-11-19 15:27:17
+ * @LastEditTime: 2020-11-19 16:43:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \project_web\src\views\lyout\index.vue
@@ -122,7 +122,7 @@
         }
         .main {
           width: 100%;
-          padding: 10px 10px 10px 20px;
+          padding: 10px;
           box-sizing: border-box;
           height: calc(100% - 46px);
         }

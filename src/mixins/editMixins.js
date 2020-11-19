@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-07-13 09:00:27
- * @LastEditTime: 2020-10-13 14:26:22
+ * @LastEditTime: 2020-11-19 17:28:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \web_unit\src\mixins\editMixins.js
@@ -22,22 +22,21 @@ export const editPage = {
         loading: false,
         pageConfigLoading: true,
         isProcess: false,
-        translateName: '',
         pageData: '',
         subTableData: [],
-        oldProjectForm: {}
+        oldProjectForm: {},
+        cloneProjectForm: {}
       };
   },
   created () {
     if (this.$route.name === 'processApprovalPage') {
       this.type = this.$base64.decode(this.$route.params.type);
-      this.translateName = this.$route.params.translateName;
       this.isProcess = true;
     } else {
       if (!this.$route.params.type) return;
       this.type = this.$base64.decode(this.$route.params.type);
       this.id = Number(this.$base64.decode(this.$route.params.id));
-      this.translateName = this.$route.params.translateName;
+      this.cloneProjectForm = this.$clone(this.projectForm);
       if (this.page) {
         if (this.type !== 'add') {
           this.pageConfig.projectForm = this.projectForm; // 挂载form 对象
@@ -156,16 +155,16 @@ export const editPage = {
     saveData(data, isProcess, callback) {
       const saveUrl = this.page.PageConfig.processParmas.saveUrl;
       this.$store.dispatch(saveUrl.url, data).then(res => {
-          const status = this.type === 'add' ? this.$t('button.add') : this.$t('button.edit');
+          const status = this.type === 'add' ? '添加' : '修改';
           if (res.status === 0) {
             if (!isProcess) {
-              this.$message.success(`${status}${this.$t('tips.success')}!`);
+              this.$message.success(`${status}成功!`);
               this.setRoute();
               return;
             }
             callback && callback();
           } else {
-            this.$message.error(`${status}${this.$t('tips.fail')}!${this.$t(`exception.${res.errorCode}`)}`);
+            this.$message.error(`${status}失败!`);
           }
       });
     },
@@ -191,57 +190,19 @@ export const editPage = {
       if (eventName === 'save') {
         this.handleSave();
       }
+      if (eventName === 'reset') {
+        this.handleReset();
+      }
+    },
+    // 重置
+    handleReset() {
+      for (const key in this.cloneProjectForm) {
+        this.$set(this.pageConfig.projectForm, key, this.cloneProjectForm[key]);
+      }
     },
     // ------------------------------------- 主表 ----------------------------------------------------
     // 获取编辑表单的项目
     editFormEvent({eventName, params}) {
-      if (eventName === 'clearProjcet') {
-        this.handleClearProject(params);
-      }
-      if (eventName === 'projcet') {
-        this.handleSelectProject(params);
-      }
-      if (eventName === 'clearPartyA') {
-        this.handleClearPartyA(params);
-      }
-      if (eventName === 'partyA') {
-        this.handleSelectPartyA(params);
-      }
-      if (eventName === 'clearPartyB') {
-        this.handleClearPartyB(params);
-      }
-      if (eventName === 'partyB') {
-        this.handleSelectPartyB(params);
-      }
-      // 合同
-      if (eventName === 'clearContractIncome') {
-        this.handleClearContractIncome(params);
-      }
-      if (eventName === 'contractIncome') {
-        this.handleSelectContractIncome(params);
-      }
-      // 分包计划
-      if (eventName === 'clearSubcontract') {
-        this.handleClearSubcontract(params);
-      }
-      if (eventName === 'subcontract') {
-        this.handleSelectSubcontract(params);
-      }
-      if (eventName === 'relationTable') {
-        this.handleOtherSelect(params);
-      }
-      if (eventName === 'clearProjectChild') {
-        this.handleClearProjectChild(params);
-      }
-      if (eventName === 'projectChild') {
-        this.handleSelectProjectChild(params);
-      }
-      if (eventName === 'clearUsePlace') {
-        this.handleClearUsePlace(params);
-      }
-      if (eventName === 'usePlace') {
-        this.handleSelectUsePlace(params);
-      }
       if (eventName === 'operateFun') {
         this[params.operateFun] && this[params.operateFun](params);
       }
@@ -258,83 +219,6 @@ export const editPage = {
     // 自动识别附件
     handleIdentify(params) {
 
-    },
-    // ----------------------------- 项目 -------------------------------
-    // 清除项目
-    handleClearProject(params) {
-      if (params.item && params.item.formType === 'multipleProject') {
-        const projectList = this.pageConfig.projectForm[params.item.prop];
-        projectList.splice(projectList.indexOf(params.tag), 1);
-        return;
-      }
-      this.handleSelectProject({selectList: [], paramsConfig: params});
-    },
-    // 选择项目
-    handleSelectProject(params) {
-      if (params.paramsConfig.check) {
-        this.handleCheckProject && this.handleCheckProject(params);
-        return;
-      }
-      // 多选项目
-      if (params.paramsConfig.formType === 'multipleProject') {
-        this.$set(this.pageConfig.projectForm, params.paramsConfig.prop, this.$clone(params.selectList));
-        return;
-      }
-      this.handleSelect(params, 'projectName');
-    },
-    // ----------------------------- 甲方单位 -------------------------------
-    // 清除甲方单位
-    handleClearPartyA(params) {
-      this.handleSelectPartyA({selectList: [], paramsConfig: params});
-    },
-    // 选择甲方单位
-    handleSelectPartyA(params) {
-      this.handleSelect(params, 'partyAName');
-    },
-    // ----------------------------- 乙方单位 -------------------------------
-    // 清除甲方单位
-    handleClearPartyB(params) {
-      this.handleSelectPartyB({selectList: [], paramsConfig: params});
-    },
-    // 选择甲方单位
-    handleSelectPartyB(params) {
-      this.handleSelect(params, 'partyBName');
-    },
-    // ----------------------------- 收入合同 -------------------------------
-    // 清除收入合同
-    handleClearContractIncome(params) {
-      this.handleSelectContractIncome({selectList: [], paramsConfig: params});
-    },
-    // 选择收入合同
-    handleSelectContractIncome(params) {
-      this.handleSelect(params, 'contractName');
-    },
-    // ----------------------------- 分包计划 -------------------------------
-    // 清除分包计划
-    handleClearSubcontract(params) {
-      this.handleSelectSubcontract({selectList: [], paramsConfig: params});
-    },
-    // 选择分包计划
-    handleSelectSubcontract(params) {
-      this.handleSelect(params, 'subcontractContent');
-    },
-    // ----------------------------- 子工程 -------------------------------
-    // 清除子工程
-    handleClearProjectChild(params) {
-      this.handleSelectProjectChild({selectList: [], paramsConfig: params});
-    },
-    // 选择子工程
-    handleSelectProjectChild(params) {
-      this.handleSelect(params, 'usePlaceName');
-    },
-    // ----------------------------- 目标工程量明细清单 (拟使用部位) -------------------------------
-    // 清除目标工程量明细清单
-    handleClearUsePlace(params) {
-      this.handleSelectUsePlace({selectList: [], paramsConfig: params});
-    },
-    // 选择目标工程量明细清单
-    handleSelectUsePlace(params) {
-      this.handleSelect(params, 'projectDetailName');
     },
     // ----------------------------- 员工 ---------------------------------
     // 清除员工
@@ -363,8 +247,9 @@ export const editPage = {
         }
       }
       if (oldProjectForm[item.prop] && isTableList) {
-        const deletMessage = this.$t('tips.chengeDataTips').replace('{keyValue}', this.$t(`${item.label}`));
-        this.$confirm(deletMessage, this.$t('tips.dataChangePrompt'), {
+        const m = "更改已选{keyValue}将会删除已选明细, 是否继续?<br><span style='color:red'>删除数据后无法找回，请谨慎考虑是否删除！</span>";
+        const deletMessage = m.replace('{keyValue}', this.$t(`${item.label}`));
+        this.$confirm(deletMessage, '数据变更提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取 消',
           dangerouslyUseHTMLString: true,
@@ -425,8 +310,9 @@ export const editPage = {
     },
     // 选择 关联明细删除提示
     selectChange(item, arr, displayValue, callback) {
-      const deletMessage = this.$t('tips.chengeDataTips').replace('{keyValue}', this.$t(`fConfig.${displayValue}`));
-      this.$confirm(deletMessage, this.$t('tips.dataChangePrompt'), {
+      const m = "更改已选{keyValue}将会删除已选明细, 是否继续?<br><span style='color:red'>删除数据后无法找回，请谨慎考虑是否删除！</span>";
+      const deletMessage = m.replace('{keyValue}', this.$t(`fConfig.${displayValue}`));
+      this.$confirm(deletMessage, '数据变更提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取 消',
         dangerouslyUseHTMLString: true,
@@ -501,10 +387,9 @@ export const editPage = {
     // 导出明细
     sysHandleExportDetail(tableName) {
       if (this.type !== 'info') {
-          this.$message.info(this.$t('tips.exportDetailTips'));
+          this.$message.info('查看时可导出');
           return;
       }
-      console.log(this.page.PageConfig.processParmas);
       const exportParams = {
           url: this.page.PageConfig.processParmas.exportDetail.url,
           params: {
@@ -515,15 +400,14 @@ export const editPage = {
     },
     // 导出明细列表操作
     handleExportDetail(exportParams, tableName) {
-      const pageName = this.$route.params && this.$route.params.translateName ? this.$route.params.translateName : this.$route.name;
-      const tranSlateName = `menu.${pageName}`;
+      const tranSlateName = this.$route.meta.title;
       this.$store.dispatch(exportParams.url, exportParams.params).then(data => {
         if (!data) return;
         const url = window.URL.createObjectURL(new Blob([data]));
         const link = document.createElement('a');
         link.style.display = 'none';
         link.href = url;
-        link.setAttribute('download', `${this.$t(tranSlateName)} ${this.$t('dialog.tendersDetail')} ${this.$t('fConfig.excel')}.xls`);
+        link.setAttribute('download', `${tranSlateName} 明细清单列表.xls`);
         document.body.appendChild(link);
         link.click();
       });
@@ -540,10 +424,10 @@ export const editPage = {
     // 批量删除
     sysHandleDeletaBatch(tableName, otherOperate) {
       if (otherOperate) {
-        this.handleDeleteSubTable(Array.from(this.pageConfig.subTableConfig[tableName].tableData), this.$t(`${this.translateName}.${tableName}`), tableName);
+        this.handleDeleteSubTable(Array.from(this.pageConfig.subTableConfig[tableName].tableData), this.$t(`${this.$route.meta.title}`), tableName);
       } else {
         if (this.deleteList[tableName] && this.deleteList[tableName].length) {
-          this.handleDeleteSubTable(this.deleteList[tableName], this.$t(`${this.translateName}.${tableName}`), tableName);
+          this.handleDeleteSubTable(this.deleteList[tableName], this.$t(`${this.$route.meta.title}`), tableName);
         } else {
           this.$message.error(this.$t('tips.pleaseSelectDetailed'));
         }
@@ -581,9 +465,9 @@ export const editPage = {
         const deleteIds = deleteList.filter(v => v.id).map(i => i.id);
         deleteIds.length && this.$store.dispatch(deleteDetailsParams.url, deleteIds).then(res => {
           if (res.status === 0) {
-            this.$message.success(`${this.$t('button.delete')}${this.$t('tips.success')}!`);
+            this.$message.success('删除成功!');
           } else {
-            this.$message.error(`${this.$t('button.delete')}${this.$t('tips.fail')}!`);
+            this.$message.error('删除失败!');
           }
         });
       }
@@ -633,10 +517,9 @@ export const editPage = {
     },
     // 明细模板下载
     sysHandleDownloadTemplate() {
-      const pageName = this.$route.params && this.$route.params.translateName ? this.$route.params.translateName : this.$route.name;
-      const tranSlateName = `menu.${pageName}`;
+      const tranSlateName = this.$route.meta.title;
       const tableName = this.page.PageConfig.processParmas.dowanloadDetail.tableName;
-      const table = `${pageName}.${tableName}`;
+      const table = `${tranSlateName}.${tableName}`;
       console.log(this.$t(table));
       this.$store.dispatch(this.page.PageConfig.processParmas.dowanloadDetail.url).then(data => {
           if (!data) return;
