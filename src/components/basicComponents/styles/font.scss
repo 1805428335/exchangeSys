@@ -74,13 +74,17 @@
   font-size: 14px;
   width: 100%;
   padding: 2px 10px;
-  &.status0 {
+  &.is-success {
     color: #24b568;
     background-color: rgba(36,181,104, 0.2);
   }
-  &.status1 {
+  &.is-error {
     color: #f73535;
     background-color: rgba(247,53,53, 0.2);
+  }
+  &.is-warning{
+    color: #f55e14;
+    background-color: rgba(153,153,153, 0.2);
   }
 }
 //小号字体

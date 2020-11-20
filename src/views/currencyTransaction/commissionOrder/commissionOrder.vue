@@ -1,7 +1,7 @@
 <!--
- * @Author: your name
+ * @Author: wumaoxia
  * @Date: 2020-11-19 15:53:48
- * @LastEditTime: 2020-11-19 19:14:39
+ * @LastEditTime: 2020-11-20 10:04:52
  * @LastEditors: Please set LastEditors
  * @Description: 委托订单
  * @FilePath: \exChange\src\views\currencyTransaction\commissionOrder\commissionOrder.vue

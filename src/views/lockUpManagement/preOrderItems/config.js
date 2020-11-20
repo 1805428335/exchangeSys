@@ -1,10 +1,10 @@
 /*
- * @Author: your name
- * @Date: 2020-11-19 19:12:33
- * @LastEditTime: 2020-11-20 10:13:58
+ * @Author: wumaoxia
+ * @Date: 2020-11-20 10:04:08
+ * @LastEditTime: 2020-11-20 10:13:51
  * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \exChange\src\views\currencyTransaction\commissionOrder\config.js
+ * @Description: 预购项目
+ * @FilePath: \exChange\src\views\lockUpManagement\preOrderItems\config.js
  */
 import Utils from 'util';
 
@@ -27,7 +27,9 @@ const PageConfig = {
     isReset: false
   },
   // 表格操作按钮
-  mainOperateBtn: [],
+  mainOperateBtn: [
+    {isCustom: false, code: 'sysHandleAdd', authCode: 'create'}
+  ],
   // 主表渲染参数
   mainTable: {
     border: true,
@@ -49,18 +51,23 @@ const PageConfig = {
     defaultSeleFirstLine: false,
     // 子系统表头渲染参数
     tableList: [
-      {show: true, prop: 'index1', label: '类型'},
-      {show: true, prop: 'index2', label: '委托用户'},
-      {show: true, prop: 'index3', label: '委托总量', filterName: 'setMoney'},
-      {show: true, prop: 'index4', label: '未成交量', filterName: 'setMoney'},
-      {show: true, prop: 'index5', label: '委托价格', filterName: 'setMoney'},
-      {show: true, prop: 'index6', label: '下单时间', formType: 'time'},
-      {show: true, prop: 'index7', label: '对标币'},
-      {show: true, prop: 'index8', label: '交易币'},
+      {show: true, prop: 'index1', label: '项目名称'},
+      {show: true, prop: 'index2', label: '起投时间', formType: 'time'},
+      {show: true, prop: 'index3', label: '止投时间', formType: 'time'},
+      {show: true, prop: 'index4', label: '预购比例'},
+      {show: true, prop: 'index5', label: '总期数'},
+      {show: true, prop: 'index6', label: '总预购量'},
+      {show: true, prop: 'index7', label: '完成预购量'},
+      {show: true, prop: 'index8', label: '最低预购'},
+      {show: true, prop: 'index9', label: '限投次数'},
+      {show: true, prop: 'index10', label: '释放率'},
+      {show: true, prop: 'index11', label: '投入币种'},
+      {show: true, prop: 'index12', label: '解锁币种'},
       // 操作
-      {show: true, formType: 'operate', label: '操作', minWidth: 100,
+      {show: true, formType: 'operate', label: '操作', minWidth: '100',
       buts: [
-          {name: '撤销订单', class: 'danger', fn: 'handleCancellationOrder', authCode: 'cancellationOrder'}
+          {name: '修改', class: 'warning', fn: 'handleEdit', authCode: 'update'},
+          {name: '删除', class: 'danger', fn: 'handleDelete', authCode: 'delete'}
       ]}
     ]
   }

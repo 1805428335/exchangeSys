@@ -145,7 +145,7 @@
     }
   }
   .el-table thead td, .el-table th{
-    padding: 8px 0 !important;
+    padding: 4px 0 !important;
   }
   .editTable .el-table .cell{
     line-height: 36px !important;
@@ -210,10 +210,10 @@
 
 // 表格的内边距
 .el-table--small td, .el-table--small th{
-    padding: 8px 0 !important;
+    padding: 4px 0 !important;
 }
 .el-table td, .el-table th{
-  padding: 8px 0 !important;
+  padding: 4px 0 !important;
 }
 .el-input-group{
   margin-bottom: 20px;

@@ -1,10 +1,10 @@
 <!--
  * @Author: wumaoxia
- * @Date: 2020-11-19 15:51:09
- * @LastEditTime: 2020-11-20 10:14:51
+ * @Date: 2020-11-20 09:36:10
+ * @LastEditTime: 2020-11-20 10:00:19
  * @LastEditors: Please set LastEditors
- * @Description: 币种简介
- * @FilePath: \exChange\src\views\currencyTransaction\currencyIntroduction\currencyIntroduction.vue
+ * @Description: 申诉记录
+ * @FilePath: \exChange\src\views\frenchCurrencyZone\complaintRecord\complaintRecord.vue
 -->
 <template>
   <div>
@@ -36,7 +36,7 @@
   import Auth from 'util/auth';
 
   export default {
-    name: 'currencyIntroduction',
+    name: 'complaintRecord',
     mixins: [search],
     data () {
       return {
@@ -57,37 +57,39 @@
       await this._getTableDataList();
     },
     methods: {
-      // 获取表单
-      _getTableDataList () {
-        this.pageConfig.mainTable.tableData = [{
-            index1: 1
-        }, {
-            index1: 1
-        }, {
-            index1: 1
-        }, {
-            index1: 1
-        }, {
-            index1: 1
-        }, {
-            index1: 1
-        }];
-        // this.handleGetTableDataList('currencyIntroduction/getPageList', true, () => {
-        //     this.pageConfig.mainTable.tableData = [{
-        //         index: 1
-        //     }];
-        // });
-      },
-      // 删除
-      handleDelete(row) {
-        const statusConfig = {
-            keyId: 'id',
-            keyName: 'projectName',
-            row,
-            api: 'currencyIntroduction/setDelete'
-        };
-        this.setDataDelete(statusConfig, row);
-      }
+        // 获取表单
+        _getTableDataList () {
+            this.pageConfig.mainTable.tableData = [{
+                index1: 1,
+                index10: '交易暂停',
+                index11: '强制买家释放'
+            }, {
+                index1: 1,
+                index10: '交易失败',
+                index11: '强制卖家放行'
+            }, {
+                index1: 1,
+                index10: '交易失败',
+                index11: '强制买家释放'
+            }, {
+                index1: 1,
+                index10: '交易成功',
+                index11: '强制卖家放行'
+            }, {
+                index1: 1,
+                index10: '交易失败',
+                index11: '强制卖家放行'
+            }, {
+                index1: 1,
+                index10: '交易成功',
+                index11: '强制卖家放行'
+            }];
+            // this.handleGetTableDataList('complaintRecord/getPageList', true, () => {
+            //     this.pageConfig.mainTable.tableData = [{
+            //         index: 1
+            //     }];
+            // });
+        }
     }
   };
 </script>

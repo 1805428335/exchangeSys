@@ -1,7 +1,7 @@
 <!--
- * @Author: your name
+ * @Author: wumaoxia
  * @Date: 2020-11-19 16:02:30
- * @LastEditTime: 2020-11-19 19:25:01
+ * @LastEditTime: 2020-11-20 10:05:19
  * @LastEditors: Please set LastEditors
  * @Description: 成交记录
  * @FilePath: \exChange\src\views\currencyTransaction\transactionRecord\transactionRecord.vue

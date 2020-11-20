@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-08-26 17:48:27
- * @LastEditTime: 2020-11-19 16:47:30
+ * @LastEditTime: 2020-11-20 09:55:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \web_projectmaterial\src\components\basicComponents\global\table\queryTable\queryTable.vue
@@ -121,11 +121,6 @@
                   @click.stop.prevent="setFn(child, scope.row)">
                   {{setDicData(scope.row[child.prop], child.selectList)}}
                 </span>
-                <!-- 状态 -->
-                <span v-else-if="child.formType === 'sysStatus'" :class="child.fn && 'midFont set'"
-                  @click.stop.prevent="setFn(child, scope.row)">
-                  {{statusFilter(scope.row[child.prop])}}
-                </span>
                 <!-- 金额 -->
                 <div v-else-if="child.formType === 'setMoney'" :class="child.fn && 'midFont set'" class="ellipsis"
                   @click.stop.prevent="setFn(child, scope.row)" style="text-align: right;">
@@ -136,13 +131,9 @@
                   @click.stop.prevent="handleViewAttachment(scope.row[child.prop])">
                   附件{{scope.row[child.prop] ? scope.row[child.prop].split(',').length : 0}}个
                 </span>
-                <!-- 审批状态 -->
-                <span v-else-if="child.formType === 'flowStatus'" class="flowStatus" :class="'flowStatus'+scope.row[child.prop]">
-                  {{flowStatusFilter(scope.row[child.prop])}}
-                </span>
-                <!-- 状态(启用/禁用) -->
-                <span v-else-if="child.formType === 'status'" class="status" :class="'status'+scope.row[child.prop]">
-                  {{statusFilter(scope.row[child.prop])}}
+                <!-- 状态 -->
+                <span v-else-if="child.formType === 'status'" class="status" :class="child.statusHandle[scope.row[child.prop]]">
+                  {{scope.row[child.prop]}}
                 </span>
                 <!-- html -->
                 <span v-else-if="child.formType === 'html'" v-html="scope.row[child.prop]"></span>
@@ -180,11 +171,6 @@
             @click.stop.prevent="setFn(item, scope.row)">
             {{setDicData(scope.row[item.prop], item.selectList)}}
           </span>
-          <!-- 状态 -->
-          <span v-else-if="item.formType === 'sysStatus'" :class="item.fn && 'midFont set'"
-            @click.stop.prevent="setFn(item, scope.row)">
-            {{statusFilter(scope.row[item.prop])}}
-          </span>
           <!-- 金额 -->
           <div v-else-if="item.formType === 'setMoney'" :class="item.fn && 'midFont set'" class="ellipsis"
             @click.stop.prevent="setFn(item, scope.row)" style="text-align: right;">
@@ -195,13 +181,9 @@
             @click.stop.prevent="handleViewAttachment(scope.row[item.prop])">
             附件{{scope.row[item.prop] ? scope.row[item.prop].split(',').length : 0}}个
           </span>
-          <!-- 审批状态 -->
-          <span v-else-if="item.formType === 'flowStatus'" class="flowStatus" :class="'flowStatus'+scope.row[item.prop]">
-            {{flowStatusFilter(scope.row[item.prop])}}
-          </span>
-          <!-- 状态(启用/禁用) -->
-          <span v-else-if="item.formType === 'status'" class="status" :class="'status'+scope.row[item.prop]">
-            {{statusFilter(scope.row[item.prop])}}
+          <!-- 状态 -->
+          <span v-else-if="item.formType === 'status'" class="status" :class="item.statusHandle[scope.row[item.prop]]">
+            {{scope.row[item.prop]}}
           </span>
           <!-- html -->
           <span v-else-if="item.formType === 'html'" v-html="scope.row[item.prop]"></span>
@@ -451,24 +433,6 @@
         const index = selectList && selectList.findIndex(v => v.dataCode === value);
         if (index < 0) return '';
         return selectList ? selectList[index].dataName : '';
-      },
-      // 系统状态
-      statusFilter(status) {
-          const index = this.$store.state.constant.statusList.findIndex(v => v.dataCode === status);
-          if (index >= 0) {
-              return this.$store.state.constant.statusList[index].dataName;
-          } else {
-              return '';
-          }
-      },
-      // 审批状态
-      flowStatusFilter(flowStatus) {
-        const index = this.$store.state.constant.flowStatusList.findIndex(v => v.dataCode === flowStatus);
-        if (index >= 0) {
-            return this.$store.state.constant.flowStatusList[index].dataName;
-        } else {
-            return '';
-        }
       },
       // 默认选中第一行
       handleCurrentChange (val) {

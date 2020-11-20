@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-07-13 09:00:27
- * @LastEditTime: 2020-11-19 17:06:27
+ * @LastEditTime: 2020-11-20 11:50:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \web_unit\src\router\index.js
@@ -146,6 +146,116 @@ export const constantRouterMap = [
           name: 'robot',
           resName: '机器人',
           meta: {title: '机器人', metaName: 'robot', isCached: true}
+        }
+      ]
+    },
+    // 法币专区
+    {
+      path: '',
+      name: 'frenchCurrencyZone',
+      resName: '法币专区',
+      isMenuShow: true,
+      component: Layout,
+      children: [
+        {
+          isMenuShow: true,
+          path: '/C2CData',
+          component: _import('frenchCurrencyZone/C2CData/C2CData'),
+          name: 'C2CData',
+          resName: 'C2C 数据',
+          meta: {title: 'C2C 数据', metaName: 'C2CData', isCached: true}
+        },
+        {
+          isMenuShow: true,
+          path: '/complaintRecord',
+          component: _import('frenchCurrencyZone/complaintRecord/complaintRecord'),
+          name: 'complaintRecord',
+          resName: '申诉记录',
+          meta: {title: '申诉记录', metaName: 'complaintRecord', isCached: true}
+        }
+      ]
+    },
+    // 锁仓管理
+    {
+      path: '',
+      name: 'lockUpManagement',
+      resName: '锁仓管理',
+      isMenuShow: true,
+      component: Layout,
+      children: [
+        {
+          isMenuShow: true,
+          path: '/preOrderItems',
+          component: _import('lockUpManagement/preOrderItems/preOrderItems'),
+          name: 'preOrderItems',
+          resName: '预购项目',
+          meta: {title: '预购项目', metaName: 'preOrderItems', isCached: true}
+        },
+        {
+          isMenuShow: false,
+          path: '/preOrderItemsEdit/:type/:id',
+          component: _import('lockUpManagement/preOrderItems/preOrderItemsEdit'),
+          name: 'preOrderItemsEdit',
+          resName: '预购项目编辑',
+          meta: {title: '预购项目编辑', metaName: 'preOrderItemsEdit', lastRouterName: 'preOrderItems', isCached: true}
+        },
+        {
+          isMenuShow: true,
+          path: '/lockUpRecord',
+          component: _import('lockUpManagement/lockUpRecord/lockUpRecord'),
+          name: 'lockUpRecord',
+          resName: '锁仓记录',
+          meta: {title: '锁仓记录', metaName: 'lockUpRecord', isCached: true}
+        }
+      ]
+    },
+    // 附件管理
+    {
+      path: '',
+      name: 'attachmentManagement',
+      resName: '附件管理',
+      isMenuShow: true,
+      component: Layout,
+      children: [
+        {
+          isMenuShow: true,
+          path: '/discoveryRotation',
+          component: _import('attachmentManagement/discoveryRotation/discoveryRotation'),
+          name: 'discoveryRotation',
+          resName: '发现轮播',
+          meta: {title: '发现轮播', metaName: 'discoveryRotation', isCached: true}
+        },
+        {
+          isMenuShow: true,
+          path: '/announcementManagement',
+          component: _import('attachmentManagement/announcementManagement/announcementManagement'),
+          name: 'announcementManagement',
+          resName: '公告管理',
+          meta: {title: '公告管理', metaName: 'announcementManagement', isCached: true}
+        },
+        {
+          isMenuShow: true,
+          path: '/helpCenter',
+          component: _import('attachmentManagement/helpCenter/helpCenter'),
+          name: 'helpCenter',
+          resName: '帮助中心',
+          meta: {title: '帮助中心', metaName: 'helpCenter', isCached: true}
+        },
+        {
+          isMenuShow: true,
+          path: '/transactionType',
+          component: _import('attachmentManagement/transactionType/transactionType'),
+          name: 'transactionType',
+          resName: '交易类型',
+          meta: {title: '交易类型', metaName: 'transactionType', isCached: true}
+        },
+        {
+          isMenuShow: true,
+          path: '/wechatConfig',
+          component: _import('attachmentManagement/wechatConfig/wechatConfig'),
+          name: 'wechatConfig',
+          resName: '微信配置',
+          meta: {title: '微信配置', metaName: 'wechatConfig', isCached: true}
         }
       ]
     }

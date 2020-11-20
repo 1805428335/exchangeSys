@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-19 16:13:36
- * @LastEditTime: 2020-11-19 19:26:41
+ * @LastEditTime: 2020-11-20 10:05:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \exChange\src\views\currencyTransaction\currencyIntroduction\config.js
@@ -10,12 +10,7 @@ import Utils from 'util';
 
 const PageConfig = {
   // 流程
-  processParmas: {
-    // 导出
-    exportUrl: {
-        url: 'currencyIntroduction/getExportData'
-    }
-  },
+  processParmas: {},
   // 数据字典
   dictionary: [],
   // 接口数据
@@ -72,8 +67,8 @@ const PageConfig = {
       // 操作
       {show: true, formType: 'operate', label: '操作', minWidth: '100',
       buts: [
-          {name: '修改', class: 'warning', fn: 'handleEdit', authCode: 'update', isCreateBy: true},
-          {name: '删除', class: 'danger', fn: 'handleDelete', authCode: 'delete', isCreateBy: true}
+          {name: '修改', class: 'warning', fn: 'handleEdit', authCode: 'update'},
+          {name: '删除', class: 'danger', fn: 'handleDelete', authCode: 'delete'}
       ]}
     ]
   }

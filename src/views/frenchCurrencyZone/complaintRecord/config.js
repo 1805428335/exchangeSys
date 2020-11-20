@@ -1,10 +1,10 @@
 /*
  * @Author: your name
- * @Date: 2020-11-19 19:12:33
- * @LastEditTime: 2020-11-20 10:13:58
+ * @Date: 2020-11-20 09:36:23
+ * @LastEditTime: 2020-11-20 09:59:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: \exChange\src\views\currencyTransaction\commissionOrder\config.js
+ * @FilePath: \exChange\src\views\frenchCurrencyZone\complaintRecord\config.js
  */
 import Utils from 'util';
 
@@ -49,19 +49,28 @@ const PageConfig = {
     defaultSeleFirstLine: false,
     // 子系统表头渲染参数
     tableList: [
-      {show: true, prop: 'index1', label: '类型'},
-      {show: true, prop: 'index2', label: '委托用户'},
-      {show: true, prop: 'index3', label: '委托总量', filterName: 'setMoney'},
-      {show: true, prop: 'index4', label: '未成交量', filterName: 'setMoney'},
-      {show: true, prop: 'index5', label: '委托价格', filterName: 'setMoney'},
-      {show: true, prop: 'index6', label: '下单时间', formType: 'time'},
-      {show: true, prop: 'index7', label: '对标币'},
-      {show: true, prop: 'index8', label: '交易币'},
-      // 操作
-      {show: true, formType: 'operate', label: '操作', minWidth: 100,
-      buts: [
-          {name: '撤销订单', class: 'danger', fn: 'handleCancellationOrder', authCode: 'cancellationOrder'}
-      ]}
+      {show: true, prop: 'index1', label: '申诉人'},
+      {show: true, prop: 'index2', label: '买家昵称'},
+      {show: true, prop: 'index3', label: '买家手机号'},
+      {show: true, prop: 'index4', label: '卖家昵称'},
+      {show: true, prop: 'index5', label: '买家手机号'},
+      {show: true, prop: 'index6', label: '订单号'},
+      {show: true, prop: 'index7', label: '申诉描述'},
+      {show: true, prop: 'index8', label: '申诉图片'},
+      {show: true, prop: 'index9', label: '申诉时间', formType: 'time'},
+      {show: true, prop: 'index10', label: '状态', formType: 'status',
+        statusHandle: {
+            '交易暂停': 'is-warning',
+            '交易失败': 'is-error',
+            '交易成功': 'is-success'
+        }
+      },
+      {show: true, prop: 'index11', label: '处理结果', formType: 'status',
+        statusHandle: {
+            '强制买家释放': 'is-error',
+            '强制卖家放行': 'is-success'
+        }
+      }
     ]
   }
 };

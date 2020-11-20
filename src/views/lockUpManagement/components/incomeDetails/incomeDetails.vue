@@ -1,17 +1,26 @@
 <!--
- * @Author: wumaoxia
- * @Date: 2020-11-19 15:51:09
- * @LastEditTime: 2020-11-20 10:14:51
+ * @Author: your name
+ * @Date: 2020-11-20 10:38:10
+ * @LastEditTime: 2020-11-20 10:51:37
  * @LastEditors: Please set LastEditors
- * @Description: 币种简介
- * @FilePath: \exChange\src\views\currencyTransaction\currencyIntroduction\currencyIntroduction.vue
+ * @Description: 收益明细
+ * @FilePath: \exChange\src\views\lockUpManagement\components\incomeDetails\incomeDetails.vue
+-->
+<!--
+ * @Author: wumaoxia
+ * @Date: 2020-11-20 10:06:28
+ * @LastEditTime: 2020-11-20 10:30:39
+ * @LastEditors: Please set LastEditors
+ * @Description: 锁仓记录
+ * @FilePath: \exChange\src\views\lockUpManagement\lockUpRecord\lockUpRecord.vue
 -->
 <template>
-  <div>
+  <div style="height: 100%;">
     <query-page
         ref="sysQueryPage"
         :page-config="pageConfig"
         :loading.sync="loading"
+        :dialogHeight="dialogHeight"
         :tableSeleList.sync="tableSeleList"
         @searchData="getSearchData"
         @fnName="pageConfigBtnFnName"
@@ -36,7 +45,7 @@
   import Auth from 'util/auth';
 
   export default {
-    name: 'currencyIntroduction',
+    name: 'incomeDetails',
     mixins: [search],
     data () {
       return {
@@ -49,45 +58,40 @@
         partyATypeTitle: '',
         dialogVisible: false,
         // 搜索数据
-        searchData: {
-        }
+        searchData: {}
       };
     },
     async created () {
       await this._getTableDataList();
     },
+    props: {
+        dialogHeight: {
+            type: Number,
+            default: 300
+        },
+        id: {
+            default: 0
+        }
+    },
     methods: {
-      // 获取表单
-      _getTableDataList () {
-        this.pageConfig.mainTable.tableData = [{
-            index1: 1
-        }, {
-            index1: 1
-        }, {
-            index1: 1
-        }, {
-            index1: 1
-        }, {
-            index1: 1
-        }, {
-            index1: 1
-        }];
-        // this.handleGetTableDataList('currencyIntroduction/getPageList', true, () => {
-        //     this.pageConfig.mainTable.tableData = [{
-        //         index: 1
-        //     }];
-        // });
-      },
-      // 删除
-      handleDelete(row) {
-        const statusConfig = {
-            keyId: 'id',
-            keyName: 'projectName',
-            row,
-            api: 'currencyIntroduction/setDelete'
-        };
-        this.setDataDelete(statusConfig, row);
-      }
+        // 获取表单
+        _getTableDataList () {
+            this.pageConfig.mainTable.tableData = [{
+                index1: 1
+            }, {
+                index1: 1
+            }, {
+                index1: 1
+            }, {
+                index1: 1
+            }, {
+                index1: 1
+            }, {
+                index1: 1
+            }];
+            this.pageConfig.searchControls.searchData.id = this.id;
+            // this.handleGetTableDataList('lockUpRecord/getIncomeDetailsPageList');
+        }
     }
   };
 </script>

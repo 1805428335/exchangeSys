@@ -1,10 +1,10 @@
 <!--
  * @Author: wumaoxia
- * @Date: 2020-11-19 15:51:09
- * @LastEditTime: 2020-11-20 10:14:51
+ * @Date: 2020-11-20 10:04:03
+ * @LastEditTime: 2020-11-20 10:14:39
  * @LastEditors: Please set LastEditors
- * @Description: 币种简介
- * @FilePath: \exChange\src\views\currencyTransaction\currencyIntroduction\currencyIntroduction.vue
+ * @Description: 预购项目
+ * @FilePath: \exChange\src\views\lockUpManagement\preOrderItems\preOrderItems.vue
 -->
 <template>
   <div>
@@ -36,7 +36,7 @@
   import Auth from 'util/auth';
 
   export default {
-    name: 'currencyIntroduction',
+    name: 'complaintRecord',
     mixins: [search],
     data () {
       return {
@@ -57,37 +57,37 @@
       await this._getTableDataList();
     },
     methods: {
-      // 获取表单
-      _getTableDataList () {
-        this.pageConfig.mainTable.tableData = [{
-            index1: 1
-        }, {
-            index1: 1
-        }, {
-            index1: 1
-        }, {
-            index1: 1
-        }, {
-            index1: 1
-        }, {
-            index1: 1
-        }];
-        // this.handleGetTableDataList('currencyIntroduction/getPageList', true, () => {
-        //     this.pageConfig.mainTable.tableData = [{
-        //         index: 1
-        //     }];
-        // });
-      },
-      // 删除
-      handleDelete(row) {
-        const statusConfig = {
-            keyId: 'id',
-            keyName: 'projectName',
-            row,
-            api: 'currencyIntroduction/setDelete'
-        };
-        this.setDataDelete(statusConfig, row);
-      }
+        // 获取表单
+        _getTableDataList () {
+            this.pageConfig.mainTable.tableData = [{
+                index1: '早鸟轮'
+            }, {
+                index1: '第一轮'
+            }, {
+                index1: '第二轮'
+            }, {
+                index1: '黑钻第一轮'
+            }, {
+                index1: '黑钻第二轮'
+            }, {
+                index1: '黑钻第三轮'
+            }];
+            // this.handleGetTableDataList('complaintRecord/getPageList', true, () => {
+            //     this.pageConfig.mainTable.tableData = [{
+            //         index: 1
+            //     }];
+            // });
+        },
+        // 删除
+        handleDelete(row) {
+            const statusConfig = {
+                keyId: 'id',
+                keyName: 'projectName',
+                row,
+                api: 'preOrderItems/setDelete'
+            };
+            this.setDataDelete(statusConfig, row);
+        }
     }
   };
 </script>
