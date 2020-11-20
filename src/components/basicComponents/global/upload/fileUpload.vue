@@ -34,7 +34,7 @@
       <span class="midFont" @click="fileShow=!fileShow">
         <i :class="fileShow?'el-icon-caret-bottom':'el-icon-caret-top'"></i>
       </span>
-      <span style="margin-left: 20px;" class="midFont">已成功上传 {{filesNum}} 个附件}}
+      <span style="margin-left: 20px;" class="midFont">已成功上传 {{filesNum}} 个附件
         <span v-if="imgUrlList.length > 0">，共 {{fileSizes}}</span>
       </span>
       <span class="midFont set" style="margin-left:16px;" v-if="isIdentify && !flowStatus" @click="handleIdentify">自动识别</span>

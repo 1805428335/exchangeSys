@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-11-20 10:06:32
- * @LastEditTime: 2020-11-20 11:35:22
+ * @LastEditTime: 2020-11-20 13:48:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \exChange\src\views\lockUpManagement\lockUpRecord\config.js
@@ -58,25 +58,25 @@ const PageConfig = {
         defaultSeleFirstLine: false,
         // 子系统表头渲染参数
         tableList: [
-        {show: true, prop: 'index1', label: '订单号'},
-        {show: true, prop: 'index2', label: '预购数量'},
-        {show: true, prop: 'index3', label: '用户'},
-        {show: true, prop: 'index4', label: '状态', formType: 'status',
-            statusHandle: {
-                '收益中': 'is-success'
-            }
-        },
-        {show: true, prop: 'index5', label: '预购时间', formType: 'time'},
-        {show: true, prop: 'index6', label: '下次释放时间', formType: 'time'},
-        {show: true, prop: 'index7', label: '是否释放', formType: 'status',
-            statusHandle: {
-                '是': 'is-success',
-                '否': 'is-error'
-            }
-        },
-        {show: true, prop: 'index8', label: '总期数'},
-        {show: true, prop: 'index9', label: '释放期数'},
-        {show: true, prop: 'index10', label: '释放率'}
+            {show: true, prop: 'index1', label: '订单号'},
+            {show: true, prop: 'index2', label: '预购数量'},
+            {show: true, prop: 'index3', label: '用户'},
+            {show: true, prop: 'index4', label: '状态', formType: 'status',
+                statusHandle: {
+                    '收益中': 'is-success'
+                }
+            },
+            {show: true, prop: 'index5', label: '预购时间', formType: 'time'},
+            {show: true, prop: 'index6', label: '下次释放时间', formType: 'time'},
+            {show: true, prop: 'index7', label: '是否释放', formType: 'status',
+                statusHandle: {
+                    '是': 'is-success',
+                    '否': 'is-error'
+                }
+            },
+            {show: true, prop: 'index8', label: '总期数'},
+            {show: true, prop: 'index9', label: '释放期数'},
+            {show: true, prop: 'index10', label: '释放率'}
         ]
     },
     // 手动锁仓
