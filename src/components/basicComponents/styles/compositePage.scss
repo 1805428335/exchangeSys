@@ -1,6 +1,7 @@
 .compositePage {
   width: 100%;
   height: 100%;
+  position: relative;
   background-color: white;
   .roleCons {
     height: 100%;
@@ -12,12 +13,8 @@
       flex: auto;
       display: flex;
       .table1 {
-        // flex: 4;
-        margin-right: 10px;
+        margin-left: 10px;
       }
-      // .table2 {
-      //   flex: 6;
-      // }
       .contents-table{
         height: 100%;
         border: 1px solid #ebeef5;
@@ -31,9 +28,6 @@
             padding: 10px 10px 0 10px;
             width: 100%;
             box-sizing: border-box;
-            .search_cons{
-              padding: 10px;
-            }
             .el-row {
               width: 100%;
               height: 100%;
@@ -49,11 +43,9 @@
           flex: auto;
           width: 100%;
           box-sizing: border-box;
-          padding: 5px 10px 10px 10px;
           .cons {
             height: 100%;
             background-color: #fff;
-            // box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
             position: relative;
           .cons-table{
               position: absolute;
@@ -75,7 +67,6 @@
               }
               .cons-table-t{
                 flex: auto;
-                // border: 1px solid #EBEEF5;
                 padding-top: 1px;
               }
               .pages {
@@ -93,7 +84,6 @@
     align-items: center;
     height: 32px;
     font-size: 16px;
-    margin-bottom: 8px;
   }
   .cons-table-expand{
     display: flex;
