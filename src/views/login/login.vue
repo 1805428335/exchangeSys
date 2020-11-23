@@ -2,11 +2,11 @@
   <div class="loginWrap" ref="loginWrap">
     <div class="headerWrap">
       <div class="logo" style="float: left;">
-        <img :src="require('assets/images/logowhite.png')" alt />
+        <img src="" alt />
       </div>
     </div>
     <div class="login-img">
-      <img :src="require('assets/images/logo.png')" alt />
+      <img src="" alt />
     </div>
     <div class="loginContents">
       <login-reset :n="n" class ref="loginReset" @logined="getLogined" v-show="!resetShow"></login-reset>

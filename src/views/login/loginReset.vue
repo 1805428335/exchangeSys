@@ -240,7 +240,7 @@ export default {
   // width: 270px;
   // min-height: 280px;
   width: 300px;
-  min-height: 320px;
+  min-height: 240px;
   margin: 0 auto;
   padding: 40px 40px 30px 40px;
   background-color: #ffffff;
@@ -249,14 +249,16 @@ export default {
   top: 45%;
   z-index: 2001;
   margin-top: -150px;
-  right: 12%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
   &.isMobileTerminal {
     right: 30%;
   }
   .login-tabs {
     width: 60%;
     margin: 10px auto;
-    height: 40px;
+    height: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;

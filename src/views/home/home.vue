@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-23 09:22:53
- * @LastEditTime: 2020-10-23 17:15:16
+ * @LastEditTime: 2020-11-23 09:40:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \web_projectmaterial\src\views\home\home.vue
@@ -17,7 +17,7 @@
 export default {
     data() {
         return {
-            homeImage: require('assets/images/home.png')
+            homeImage: ''
         };
     }
 };
