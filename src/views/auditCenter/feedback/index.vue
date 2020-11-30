@@ -27,31 +27,6 @@
         </g-query-table>
       </template>
     </query-page>
-    <g-dialog v-if="dialogShow" :dialogConfig="dialogConfig" :isVisible.sync="dialogShow">
-      <div slot="body">
-        <g-edit-form
-          ref="editForm"
-          v-if="dialogShow"
-          :type="type"
-          :tableConfig="pageConfig.mainFormConfig"
-          :projectForm="projectForm"
-          :customRules="{code3: [
-            {required: true,message:'请输入手机号', trigger: 'blur'},
-            {pattern: /^1[3|4|5|7|8][0-9]\d{8}$/,message:'手机号格式不对', trigger: 'blur'},
-          ]}"
-        >
-        </g-edit-form>
-      </div>
-      <div slot="footer" class="footer">
-        <el-button class="urgent" type="primary" icon="el-icon-circle-close" size="small" @click="dialogClose">
-          取 消
-        </el-button>
-        <el-button size="small" type="primary" :disabled="type === 'info'" icon="el-icon-circle-check"
-                   @click="dialogSave" v-fast-click>
-          保 存
-        </el-button>
-      </div>
-    </g-dialog>
   </div>
 </template>
 
@@ -61,7 +36,7 @@ import {search} from 'mixins/searchMixins';
 import Auth from 'util/auth';
 
 export default {
-  name: 'userManagement',
+  name: 'feedback',
   mixins: [search],
   data () {
     return {
@@ -75,25 +50,7 @@ export default {
       dialogVisible: false,
       // 搜索数据
       searchData: {
-      },
-      // 弹窗
-      dialogShow: false,
-      dialogConfig: {
-        title: '添加',
-        appendBody: false,
-        center: true,
-        top: '200px',
-        width: '60%',
-        span: '0.5'
-      },
-      projectForm: {
-        code1: '',
-        code2: '',
-        code3: '',
-        code4: ''
-      },
-      cloneProjectForm: {},
-      type: 'add'
+      }
     };
   },
   async created () {
@@ -120,33 +77,6 @@ export default {
       //         index: 1
       //     }];
       // });
-    },
-    // 添加
-    sysHandleAdd() {
-      this.type = 'add';
-      this.dialogConfig.title = '添加';
-      this.dialogShow = true;
-    },
-    // 修改
-    handleEdit(row) {
-      this.type = 'edit';
-      this.dialogConfig.title = '修改';
-      const data = this.$clone(row);
-      this.projectForm = data;
-      this.dialogShow = true;
-    },
-    // 取消
-    dialogClose() {
-      this.projectForm = this.$clone(this.cloneProjectForm);
-      this.dialogShow = false;
-    },
-    // 确定
-    dialogSave() {
-      this.$refs.editForm.getValidateForm(() => {
-        const data = this.$clone(this.projectForm);
-        this.handleSaveData(data);
-        this.dialogShow = false;
-      });
     },
     // 删除
     handleDelete(row) {

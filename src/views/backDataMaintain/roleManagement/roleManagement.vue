@@ -61,7 +61,7 @@ import {search} from 'mixins/searchMixins';
 import Auth from 'util/auth';
 
 export default {
-  name: 'userManagement',
+  name: 'roleManagement',
   mixins: [search],
   data () {
     return {
@@ -84,7 +84,7 @@ export default {
         center: true,
         top: '200px',
         width: '60%',
-        span: '0.5'
+        span: '0.4'
       },
       projectForm: {
         code1: '',

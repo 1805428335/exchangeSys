@@ -35,10 +35,6 @@
           :type="type"
           :tableConfig="pageConfig.mainFormConfig"
           :projectForm="projectForm"
-          :customRules="{code3: [
-            {required: true,message:'请输入手机号', trigger: 'blur'},
-            {pattern: /^1[3|4|5|7|8][0-9]\d{8}$/,message:'手机号格式不对', trigger: 'blur'},
-          ]}"
         >
         </g-edit-form>
       </div>
@@ -61,7 +57,7 @@ import {search} from 'mixins/searchMixins';
 import Auth from 'util/auth';
 
 export default {
-  name: 'userManagement',
+  name: 'userPayLimit',
   mixins: [search],
   data () {
     return {
@@ -84,7 +80,7 @@ export default {
         center: true,
         top: '200px',
         width: '60%',
-        span: '0.5'
+        span: '0.4'
       },
       projectForm: {
         code1: '',

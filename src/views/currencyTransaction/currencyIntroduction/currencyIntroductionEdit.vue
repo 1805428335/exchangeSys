@@ -8,65 +8,72 @@
 -->
 
 <template>
-    <div>
-        <edit-page @editEvent="editEvent" v-loading="loading">
-            <div slot="editPage">
-                <g-edit-form
-                    ref="editForm"
-                    v-if="pageConfigLoading"
-                    :type="type"
-                    :tableConfig="pageConfig.mainFormConfig"
-                    :projectForm="pageConfig.projectForm"
-                    @editFormEvent="editFormEvent">
-                </g-edit-form>
-            </div>
-        </edit-page>
-    </div>
+  <div>
+    <edit-page @editEvent="editEvent" v-loading="loading">
+      <div slot="editPage">
+        <g-edit-form
+          ref="editForm"
+          v-if="pageConfigLoading"
+          :type="type"
+          :tableConfig="pageConfig.mainFormConfig"
+          :projectForm="pageConfig.projectForm"
+          @editFormEvent="editFormEvent"
+          :customRules="{
+                  code3: [
+                  {validator: checkPhone, trigger: 'blur'}
+                  ]
+        }"
+        >
+        </g-edit-form>
+      </div>
+    </edit-page>
+  </div>
 </template>
 <script>
 import Page from './configEdit.js';
 import {editPage} from 'mixins/editMixins';
 
 export default {
-    name: 'limitedCollateralEdit',
-    mixins: [editPage],
-    data () {
-        return {
-            page: new Page(),
-            projectForm: {
-                code: '',
-                code1: '',
-                code2: '',
-                code3: '',
-                code4: '',
-                code5: '',
-                code6: '',
-                code7: '',
-                code8: '',
-                code9: '',
-                code10: '',
-                code11: ''
-            }
-        };
-    },
-    props: {
-        processParmas: {
-            type: Object,
-            default: () => {}
-        }
-    },
-    methods: {
-        // 获取info数据
-        async _getInfoData(id = 0) {
-            await this.handleGetInfoData(id, this.page.PageConfig.processParmas.infoUrl);
-        },
-        // 保存
-        handleSave (isProcess = false) {
-            this.$refs.editForm.getValidateForm(() => {
-                const data = this.$clone(this.pageConfig.projectForm);
-                this.handleSaveData(data, isProcess);
-            });
-        }
+  name: 'limitedCollateralEdit',
+  mixins: [editPage],
+  data() {
+    return {
+      page: new Page(),
+      projectForm: {
+        code: '',
+        code1: '',
+        code2: '',
+        code3: '',
+        code4: '',
+        code5: '',
+        code6: '',
+        code7: '',
+        code8: '',
+        code9: '',
+        code10: '',
+        code11: ''
+      }
+    };
+  },
+  props: {
+    processParmas: {
+      type: Object,
+      default: () => {
+      }
     }
+  },
+  methods: {
+    // 获取info数据
+    async _getInfoData(id = 0) {
+      await this.handleGetInfoData(id, this.page.PageConfig.processParmas.infoUrl);
+    },
+    // 保存
+    handleSave(isProcess = false) {
+      this.$refs.editForm.getValidateForm(() => {
+        const data = this.$clone(this.pageConfig.projectForm);
+        this.handleSaveData(data, isProcess);
+      });
+    }
+  }
 };
 </script>
