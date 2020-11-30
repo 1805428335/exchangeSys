@@ -1,13 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2020-06-28 09:08:48
- * @LastEditTime: 2020-11-30 15:15:48
+ * @LastEditTime: 2020-11-30 16:14:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \web_basicconfiguration-施工云企业信息及配置\src\main.js
  */
 /* eslint-disable */
-require("es6-promise").polyfill()
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";

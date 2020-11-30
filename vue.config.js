@@ -13,9 +13,7 @@ module.exports = {
 
       // 开发生产共同配置
     });
-    config.entry('main').add('babel-polyfill');
   },
-  transpileDependencies: ['element-ui'],
   configureWebpack: (config) => {
     if (process.env.NODE_ENV === 'production') {
       // 为生产环境修改配置...
