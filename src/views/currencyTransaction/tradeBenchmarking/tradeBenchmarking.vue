@@ -1,7 +1,7 @@
 <!--
  * @Author: wumaoxia
  * @Date: 2020-11-19 15:50:11
- * @LastEditTime: 2020-12-03 10:39:52
+ * @LastEditTime: 2020-12-03 10:44:37
  * @LastEditors: Please set LastEditors
  * @Description: 交易对标
  * @FilePath: \exChange\src\views\currencyTransaction\tradeBenchmarking\tradeBenchmarking.vue
@@ -253,9 +253,21 @@ export default {
         this._getDataItemList();
     },
     // 分配
-    handleDistribution() {},
+    handleDistribution() {
+        if (this.tableSeleList && this.tableSeleList.length === 0) {
+            this.$message.error('请选择未分配币种');
+            return;
+        }
+        console.log(this.tableSeleList);
+    },
     // 取消分配
-    handleCancelAllocation() {},
+    handleCancelAllocation() {
+        if (this.tableSeleChildrenList && this.tableSeleChildrenList.length === 0) {
+            this.$message.error('请选择已分配币种');
+            return;
+        }
+        console.log(this.tableSeleChildrenList);
+    },
     // 待分配
     handleToBeAllocated() {},
     // 显示
