@@ -95,4 +95,5 @@ export default {
 }
 
 @import 'styles/compositePage.scss';
+
 </style>

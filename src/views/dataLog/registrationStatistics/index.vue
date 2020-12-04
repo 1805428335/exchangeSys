@@ -1,5 +1,6 @@
 <template>
   <div ref="chart" style="width:100vw;height:calc(100% - 80px);"></div>
+
 </template>
 
 <script>
@@ -40,3 +41,4 @@ export default {
 <style scoped>
 
 </style>
+
