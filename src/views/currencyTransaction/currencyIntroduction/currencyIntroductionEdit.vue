@@ -18,11 +18,6 @@
           :tableConfig="pageConfig.mainFormConfig"
           :projectForm="pageConfig.projectForm"
           @editFormEvent="editFormEvent"
-          :customRules="{
-                  code3: [
-                  {validator: checkPhone, trigger: 'blur'}
-                  ]
-        }"
         >
         </g-edit-form>
       </div>

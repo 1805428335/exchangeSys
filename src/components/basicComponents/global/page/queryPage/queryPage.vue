@@ -17,7 +17,8 @@
           <div class="table_cons">
             <div class="table_cons_table" ref="table_cons">
                 <div class="table-fixed-content">
-                    <div class="fixed">
+                  <!--TODO 添加样式-->
+                    <div class="fixed" style="display: flex;flex-direction:column ;">
                         <div class="table_btn" ref="table_btn" v-if="pageConfig.mainOperateBtn.length || pageConfig.mainBtnSlotShow || pageConfig.mainTable.tableHeader.showColumnCtrl">
                             <div  v-if="pageConfig.mainBtnSlotShow">
                                 <slot name="mainBtnSlot" :pageConfig="pageConfig"></slot>

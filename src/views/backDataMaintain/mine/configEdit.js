@@ -38,18 +38,26 @@ const PageConfig = {
         label: '用户编号', prop: 'code', span: 24, formType: 'input', isRule: true, maxlength: 20
       },
       {
-        label: '用户名称', prop: 'code', span: 24, formType: 'input', isRule: true, maxlength: 20
+        label: '用户名称', prop: 'code1', span: 24, formType: 'input', isRule: true, maxlength: 20
       },
       {
-        label: '密码', prop: 'code', span: 24, formType: 'input', isRule: true, maxlength: 20
+        label: '密码', prop: 'code2', span: 24, formType: 'input', isRule: true, maxlength: 20
       },
       {
-        label: '手机号', prop: 'code2', span: 24, formType: 'input', isRule: true, maxlength: 11
+        label: '手机号', prop: 'code3', span: 24, formType: 'input', isRule: true, maxlength: 11
       },
       {
-        label: '备注', prop: 'code1', span: 24, formType: 'textarea', minRows: 2, maxRows: 5, isRule: true, maxlength: 200
+        label: '备注',
+        prop: 'code4',
+        span: 24,
+        formType: 'textarea',
+        minRows: 2,
+        maxRows: 5,
+        isRule: true,
+        maxlength: 200
       }
-    ]
+    ],
+    projectForm: {}
   },
   subTableMatch: [],
   // 子表

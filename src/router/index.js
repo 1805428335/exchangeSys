@@ -123,6 +123,56 @@ export const constantRouterMap = [
       }
     ]
   },
+  // 基础数据
+  {
+    path: '',
+    name: 'basicData',
+    resName: '基础数据',
+    isMenuShow: true,
+    component: Layout,
+    children: [
+      {
+        isMenuShow: true,
+        path: '/userManagements',
+        component: _import('basicData/userManagements/index'),
+        name: 'userManagements',
+        resName: '用户管理',
+        meta: {title: '用户管理', metaName: 'userManagements', isCached: true}
+      },
+      {
+        isMenuShow: true,
+        path: '/userInformation',
+        component: _import('basicData/userInformation/index'),
+        name: 'userInformation',
+        resName: '用户信息',
+        meta: {title: '用户信息', metaName: 'userInformation', isCached: true}
+      },
+      {
+        isMenuShow: true,
+        path: '/maleChainCurrency',
+        component: _import('basicData/maleChainCurrency/index'),
+        name: 'maleChainCurrency',
+        resName: '公链币种',
+        meta: {title: '公链币种', metaName: 'maleChainCurrency', isCached: true}
+      },
+      {
+        isMenuShow: true,
+        path: '/addressTheLibrary',
+        component: _import('basicData/addressTheLibrary/index'),
+        name: 'addressTheLibrary',
+        resName: '地址库',
+        meta: {title: '地址库', metaName: 'addressTheLibrary', isCached: true}
+      },
+      {
+        isMenuShow: true,
+        path: '/transactionPrice',
+        component: _import('basicData/transactionPrice/index'),
+        name: 'transactionPrice',
+        resName: '交易限价',
+        meta: {title: '交易限价', metaName: 'transactionPrice', isCached: true}
+      }
+    ]
+  },
   // 审核中心
   {
     path: '',
@@ -503,6 +553,57 @@ export const constantRouterMap = [
       }
     ]
   },
+  // 充提汇
+  {
+    path: '',
+    name: 'chargeToAskHui',
+    resName: '充提汇',
+    isMenuShow: true,
+    component: Layout,
+    children: [
+      {
+        isMenuShow: true,
+        path: '/chainOnTheAssets',
+        component: _import('chargeToAskHui/chainOnTheAssets/index'),
+        name: 'chainOnTheAssets',
+        resName: '链上资产',
+        meta: {title: '链上资产', metaName: 'chainOnTheAssets', isCached: true}
+      },
+      {
+        isMenuShow: true,
+        path: '/mentionFillingRecord',
+        component: _import('chargeToAskHui/mentionFillingRecord/index'),
+        name: 'mentionFillingRecord',
+        resName: '充提记录',
+        meta: {title: '充提记录', metaName: 'mentionFillingRecord', isCached: true}
+      },
+      {
+        isMenuShow: true,
+        path: '/summaryManagement',
+        component: _import('chargeToAskHui/summaryManagement/index'),
+        name: 'summaryManagement',
+        resName: '汇总管理',
+        meta: {title: '汇总管理', metaName: 'summaryManagement', isCached: true}
+      },
+      {
+        isMenuShow: true,
+        path: '/bluntRemittancesAccount',
+        component: _import('chargeToAskHui/bluntRemittancesAccount/index'),
+        name: 'bluntRemittancesAccount',
+        resName: '冲汇兑账',
+        meta: {title: '冲汇兑账', metaName: 'bluntRemittancesAccount', isCached: true}
+      },
+      {
+        isMenuShow: true,
+        path: '/auditRecords',
+        component: _import('chargeToAskHui/auditRecords/index'),
+        name: 'auditRecords',
+        resName: '审核记录',
+        meta: {title: '审核记录', metaName: 'auditRecords', isCached: true}
+      }
+    ]
+  },
+
   // 附件管理
   {
     path: '',
@@ -542,6 +643,32 @@ export const constantRouterMap = [
         name: 'wechatConfig',
         resName: '微信配置',
         meta: {title: '微信配置', metaName: 'wechatConfig', isCached: true}
+      }
+    ]
+  },
+  // 支付管理
+  {
+    path: '',
+    name: 'discoveryCenter',
+    resName: '发现中心',
+    isMenuShow: true,
+    component: Layout,
+    children: [
+      {
+        isMenuShow: true,
+        path: '/discoveryCenter',
+        component: _import('discoveryCenter/discoveryCenter/index'),
+        name: 'discoveryCenter',
+        resName: '发现中心',
+        meta: {title: '发现中心', metaName: 'discoveryCenter', isCached: true}
+      },
+      {
+        isMenuShow: true,
+        path: '/appNative',
+        component: _import('discoveryCenter/appNative/index'),
+        name: 'appNative',
+        resName: 'AppNative',
+        meta: {title: 'AppNative', metaName: 'appNative', isCached: true}
       }
     ]
   },
